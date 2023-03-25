@@ -21,7 +21,9 @@ def test_finds_selene_with_refined_query():
     results.should(have.size_greater_than(6))
 
     browser.element('[name="q"]').type(' yashaka github').press_enter()
+    #browser.element('#rso>div:nth-of-type(1) h3').click() не очень удачный вариант селектора. сложно определить почему упал тест
     results.first.element('h3').click()
+    #results[13].first.element('h3').click()
     browser.should(have.title_containing('yashaka/selene'))
 
 browser.quit()
